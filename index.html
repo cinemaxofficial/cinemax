@@ -1,194 +1,667 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CINEMAX</title>
+<title>CINEMAX | Premium Movies</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#070707;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+/* NAVBAR */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    background:rgba(10,10,10,.95);
+    border-bottom:1px solid #222;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#e50914;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#e50914;
+}
+
+/* HERO */
+
+.hero{
+    min-height:520px;
+    padding:130px 6%;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 80% 30%,#3b0000 0,#160000 20%,transparent 45%),
+    linear-gradient(90deg,#070707 25%,rgba(7,7,7,.75),#070707);
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.badge{
+    display:inline-block;
+    background:#e50914;
+    padding:7px 12px;
+    border-radius:4px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:58px;
+    line-height:1.05;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    color:#e50914;
+}
+
+.hero p{
+    color:#aaa;
+    line-height:1.7;
+    max-width:500px;
+    margin-bottom:25px;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.primary{
+    background:#e50914;
+    color:white;
+}
+
+.secondary{
+    background:#222;
+    color:white;
+}
+
+.primary:hover{
+    background:#ff1824;
+}
+
+/* SECTION */
+
+.section{
+    padding:45px 5%;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.section-title span{
+    color:#e50914;
+}
+
+/* SEARCH */
+
+.search-box{
+    width:100%;
+    max-width:500px;
+    margin:0 auto 35px;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px 18px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    background:#171717;
+    color:#fff;
+    border:1px solid #292929;
+}
+
+.search-box input:focus{
+    border-color:#e50914;
+}
+
+/* MOVIES */
+
+.movies{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+}
+
+.movie{
+    background:#111;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid #222;
+    transition:.3s;
+}
+
+.movie:hover{
+    transform:translateY(-7px);
+    border-color:#e50914;
+}
+
+.poster{
+    height:260px;
+    display:flex;
+    align-items:flex-end;
+    padding:15px;
+    background:
+    linear-gradient(0deg,#000,transparent 65%),
+    linear-gradient(135deg,#520000,#111 55%,#300000);
+}
+
+.poster.two{
+    background:
+    linear-gradient(0deg,#000,transparent 65%),
+    linear-gradient(135deg,#001c52,#111 55%,#000b30);
+}
+
+.poster.three{
+    background:
+    linear-gradient(0deg,#000,transparent 65%),
+    linear-gradient(135deg,#513600,#111 55%,#261800);
+}
+
+.poster.four{
+    background:
+    linear-gradient(0deg,#000,transparent 65%),
+    linear-gradient(135deg,#350052,#111 55%,#190026);
+}
+
+.poster.five{
+    background:
+    linear-gradient(0deg,#000,transparent 65%),
+    linear-gradient(135deg,#005243,#111 55%,#00261f);
+}
+
+.poster-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.movie-info{
+    padding:14px;
+}
+
+.movie-info h3{
+    font-size:15px;
+    margin-bottom:7px;
+}
+
+.movie-info p{
+    color:#777;
+    font-size:12px;
+}
+
+.watch{
+    display:block;
+    text-align:center;
+    margin-top:12px;
+    padding:9px;
+    background:#e50914;
+    border-radius:4px;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* CATEGORIES */
+
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:8px;
+}
+
+.category{
+    flex:none;
+    background:#171717;
+    border:1px solid #292929;
+    color:#ccc;
+    padding:10px 18px;
+    border-radius:25px;
+    cursor:pointer;
+}
+
+.category:hover{
+    background:#e50914;
+    color:#fff;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:40px;
+    padding:45px 5%;
+    background:#0d0d0d;
+    border-top:1px solid #222;
+    text-align:center;
+}
+
+.footer-logo{
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.footer-logo span{
+    color:#e50914;
+}
+
+footer p{
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .movies{
+        grid-template-columns:repeat(3,1fr);
     }
 
-    body {
-      background: #070707;
-      color: white;
-      font-family: Arial, sans-serif;
+}
+
+@media(max-width:600px){
+
+    header{
+        height:60px;
+        padding:0 18px;
     }
 
-    header {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 25px;
-      background: #111;
+    .logo{
+        font-size:21px;
     }
 
-    .logo {
-      font-size: 26px;
-      font-weight: bold;
-      letter-spacing: 2px;
+    nav{
+        gap:12px;
     }
 
-    .logo span {
-      color: #e50914;
+    nav a{
+        font-size:11px;
     }
 
-    nav a {
-      color: #ddd;
-      text-decoration: none;
-      margin-left: 20px;
+    .hero{
+        min-height:470px;
+        padding:100px 20px 50px;
     }
 
-    .hero {
-      min-height: 500px;
-      padding: 120px 25px 50px;
-      background:
-        linear-gradient(90deg, #070707 20%, transparent),
-        linear-gradient(0deg, #070707, transparent);
+    .hero h1{
+        font-size:42px;
     }
 
-    .hero h1 {
-      font-size: 55px;
-      margin-bottom: 15px;
+    .hero p{
+        font-size:14px;
     }
 
-    .hero h1 span {
-      color: #e50914;
+    .section{
+        padding:35px 18px;
     }
 
-    .hero p {
-      color: #bbb;
-      max-width: 500px;
-      line-height: 1.7;
-      margin-bottom: 25px;
+    .movies{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
     }
 
-    .btn {
-      display: inline-block;
-      background: #e50914;
-      color: white;
-      padding: 13px 22px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
+    .poster{
+        height:220px;
     }
 
-    .section {
-      padding: 30px 25px;
+    .poster-title{
+        font-size:16px;
     }
 
-    .section h2 {
-      margin-bottom: 20px;
+    .movie-info{
+        padding:11px;
     }
 
-    .movies {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
+    .movie-info h3{
+        font-size:13px;
     }
 
-    .movie {
-      background: #151515;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    .movie h3 {
-      margin-bottom: 8px;
-    }
-
-    .movie p {
-      color: #888;
-      font-size: 13px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #777;
-      margin-top: 30px;
-    }
-
-    @media(max-width: 600px) {
-      nav {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .movies {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">
-      CINE<span>MAX</span>
-    </div>
+<!-- NAVIGATION -->
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Movies</a>
-      <a href="#">Series</a>
-      <a href="#">Search</a>
-    </nav>
-  </header>
+<header>
 
-  <section class="hero">
-    <h1>Welcome to CINE<span>MAX</span></h1>
+<div class="logo">
+CINE<span>MAX</span>
+</div>
 
-    <p>
-      Your world of cinema. Discover movies,
-      series and unforgettable stories in one place.
-    </p>
+<nav>
+<a href="#">Home</a>
+<a href="#movies">Movies</a>
+<a href="#genres">Genres</a>
+<a href="#search">Search</a>
+</nav>
 
-    <a href="#" class="btn">▶ Explore Movies</a>
-  </section>
+</header>
 
-  <section class="section">
-    <h2>🔥 Trending Movies</h2>
 
-    <div class="movies">
+<!-- HERO -->
 
-      <div class="movie">
-        <h3>Movie One</h3>
-        <p>Action • 2026</p>
-      </div>
+<section class="hero">
 
-      <div class="movie">
-        <h3>Movie Two</h3>
-        <p>Thriller • 2026</p>
-      </div>
+<div class="hero-content">
 
-      <div class="movie">
-        <h3>Movie Three</h3>
-        <p>Sci-Fi • 2026</p>
-      </div>
+<div class="badge">WELCOME TO CINEMAX</div>
 
-      <div class="movie">
-        <h3>Movie Four</h3>
-        <p>Adventure • 2026</p>
-      </div>
+<h1>
+Your World of <span>Movies</span>
+</h1>
 
-    </div>
-  </section>
+<p>
+Discover movies, series and unforgettable stories.
+CINEMAX brings your entertainment world together
+in one premium destination.
+</p>
 
-  <footer>
-    © 2026 CINEMAX — Your World of Cinema
-  </footer>
+<div class="buttons">
+
+<a href="#movies" class="btn primary">
+▶ Explore Movies
+</a>
+
+<a href="#genres" class="btn secondary">
+Browse Genres
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<section class="section" id="search">
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search movies..."
+onkeyup="searchMovies()"
+>
+
+</div>
+
+</section>
+
+
+<!-- TRENDING -->
+
+<section class="section" id="movies">
+
+<div class="section-title">
+
+<h2>🔥 <span>Trending</span> Movies</h2>
+
+</div>
+
+
+<div class="movies" id="movieList">
+
+
+<div class="movie">
+
+<div class="poster">
+
+<div class="poster-title">
+THE DARK NIGHT
+</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>The Dark Night</h3>
+
+<p>Action • 2026</p>
+
+<a href="#" class="watch">▶ Watch Now</a>
+
+</div>
+
+</div>
+
+
+
+<div class="movie">
+
+<div class="poster two">
+
+<div class="poster-title">
+SPACE WAR
+</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>Space War</h3>
+
+<p>Sci-Fi • 2026</p>
+
+<a href="#" class="watch">▶ Watch Now</a>
+
+</div>
+
+</div>
+
+
+
+<div class="movie">
+
+<div class="poster three">
+
+<div class="poster-title">
+THE LAST KING
+</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>The Last King</h3>
+
+<p>Adventure • 2026</p>
+
+<a href="#" class="watch">▶ Watch Now</a>
+
+</div>
+
+</div>
+
+
+
+<div class="movie">
+
+<div class="poster four">
+
+<div class="poster-title">
+NIGHT CITY
+</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>Night City</h3>
+
+<p>Thriller • 2026</p>
+
+<a href="#" class="watch">▶ Watch Now</a>
+
+</div>
+
+</div>
+
+
+
+<div class="movie">
+
+<div class="poster five">
+
+<div class="poster-title">
+OCEAN WORLD
+</div>
+
+</div>
+
+<div class="movie-info">
+
+<h3>Ocean World</h3>
+
+<p>Fantasy • 2026</p>
+
+<a href="#" class="watch">▶ Watch Now</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- GENRES -->
+
+<section class="section" id="genres">
+
+<div class="section-title">
+
+<h2>🎬 Browse <span>Genres</span></h2>
+
+</div>
+
+<div class="categories">
+
+<div class="category">Action</div>
+<div class="category">Adventure</div>
+<div class="category">Comedy</div>
+<div class="category">Drama</div>
+<div class="category">Horror</div>
+<div class="category">Sci-Fi</div>
+<div class="category">Thriller</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-logo">
+CINE<span>MAX</span>
+</div>
+
+<p>
+© 2026 CINEMAX. Your World of Cinema.
+</p>
+
+</footer>
+
+
+<script>
+
+function searchMovies(){
+
+let input =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+let movies =
+document.querySelectorAll(".movie");
+
+movies.forEach(function(movie){
+
+let title =
+movie.innerText.toLowerCase();
+
+if(title.includes(input)){
+
+movie.style.display="block";
+
+}else{
+
+movie.style.display="none";
+
+}
+
+});
+
+}
+
+</script>
 
 </body>
 </html>
