@@ -7,6 +7,7 @@
 <title>CINEMAX | Premium Movies</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -14,12 +15,12 @@
 }
 
 body{
-    background:#070707;
+    background:#050505;
     color:#fff;
     font-family:Arial,Helvetica,sans-serif;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= HEADER ================= */
 
 header{
     height:58px;
@@ -30,7 +31,7 @@ header{
     padding:0 28px;
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:999;
 }
 
 .logo{
@@ -44,15 +45,15 @@ header{
 }
 
 nav{
-    margin-left:90px;
     display:flex;
-    gap:30px;
+    gap:28px;
+    margin-left:90px;
 }
 
 nav a{
     color:#aaa;
     text-decoration:none;
-    font-size:13px;
+    font-size:12px;
 }
 
 nav a:hover{
@@ -63,27 +64,37 @@ nav a:hover{
     margin-left:auto;
     width:220px;
     height:34px;
-    background:#171717;
-    border:1px solid #292929;
     border-radius:20px;
-    color:white;
-    padding:0 15px;
+    border:1px solid #292929;
+    background:#151515;
+    color:#fff;
+    padding:0 14px;
     outline:none;
 }
 
 /* ================= HERO ================= */
 
 .hero{
+
     min-height:500px;
-    position:relative;
+
     display:flex;
     align-items:center;
+
     padding:60px 35px;
-    overflow:hidden;
+
+    position:relative;
 
     background:
-    linear-gradient(90deg,#050505 5%,rgba(5,5,5,.92) 35%,rgba(5,5,5,.35) 75%,#050505 100%),
-    url("https://image.tmdb.org/t/p/original/1R6cvRtZgsYCkh8UFuWFN33xBP4.jpg");
+    linear-gradient(
+        90deg,
+        #050505 5%,
+        rgba(5,5,5,.95) 35%,
+        rgba(5,5,5,.45) 70%,
+        #050505 100%
+    ),
+
+    url("https://image.tmdb.org/t/p/original/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg");
 
     background-size:cover;
     background-position:center;
@@ -91,7 +102,6 @@ nav a:hover{
 
 .hero-content{
     max-width:520px;
-    z-index:2;
 }
 
 .featured{
@@ -99,21 +109,21 @@ nav a:hover{
     background:#e50914;
     padding:7px 13px;
     border-radius:3px;
-    font-size:11px;
+    font-size:10px;
     font-weight:bold;
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    font-size:55px;
-    line-height:1;
-    margin-bottom:20px;
+    font-size:54px;
+    line-height:.98;
+    margin-bottom:18px;
 }
 
 .hero-info{
-    color:#bbb;
+    color:#aaa;
+    font-size:13px;
     margin-bottom:15px;
-    font-size:14px;
 }
 
 .hero-info span{
@@ -122,21 +132,21 @@ nav a:hover{
 
 .hero p{
     color:#ccc;
+    font-size:13px;
     line-height:1.6;
-    font-size:14px;
-    max-width:480px;
+    max-width:470px;
 }
 
 .buttons{
-    margin-top:25px;
     display:flex;
-    gap:12px;
+    gap:10px;
+    margin-top:24px;
 }
 
 .btn{
     border:0;
-    padding:13px 20px;
     border-radius:4px;
+    padding:12px 20px;
     font-weight:bold;
     cursor:pointer;
 }
@@ -147,21 +157,21 @@ nav a:hover{
 }
 
 .btn-dark{
-    background:#292929;
+    background:#272727;
     color:white;
 }
 
 /* ================= MAIN ================= */
 
 .container{
-    padding:30px;
+    padding:28px 30px;
 }
 
 .section-title{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:0 0 17px;
+    margin-bottom:15px;
 }
 
 .section-title h2{
@@ -170,26 +180,30 @@ nav a:hover{
 
 .view{
     color:#e50914;
-    font-size:12px;
+    font-size:11px;
 }
 
 /* ================= GENRES ================= */
 
 .genres{
     display:flex;
-    gap:10px;
+    gap:9px;
     overflow-x:auto;
-    padding-bottom:12px;
+    scrollbar-width:none;
+}
+
+.genres::-webkit-scrollbar{
+    display:none;
 }
 
 .genre{
-    white-space:nowrap;
-    padding:8px 17px;
-    background:#181818;
+    flex-shrink:0;
+    padding:8px 16px;
+    background:#171717;
     border:1px solid #292929;
     border-radius:20px;
     color:#aaa;
-    font-size:12px;
+    font-size:11px;
     cursor:pointer;
 }
 
@@ -200,7 +214,7 @@ nav a:hover{
     border-color:#e50914;
 }
 
-/* ================= MOVIE GRID ================= */
+/* ================= MOVIES ================= */
 
 .movie-grid{
     display:grid;
@@ -212,64 +226,64 @@ nav a:hover{
     min-width:0;
     position:relative;
     cursor:pointer;
-    transition:.3s;
+    transition:.25s;
 }
 
 .movie-card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-5px);
 }
 
 .poster{
     width:100%;
     aspect-ratio:2/3;
     object-fit:cover;
-    border-radius:8px;
     display:block;
+    border-radius:7px;
     background:#151515;
     border:1px solid #252525;
 }
 
 .badge{
     position:absolute;
-    top:9px;
+    top:8px;
     left:8px;
     background:#e50914;
-    padding:4px 7px;
+    padding:4px 6px;
     border-radius:3px;
-    font-size:9px;
+    font-size:8px;
     font-weight:bold;
 }
 
 .movie-title{
-    font-size:14px;
+    margin-top:8px;
+    font-size:13px;
     font-weight:bold;
-    margin-top:9px;
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
 
 .movie-meta{
+    margin-top:4px;
     color:#777;
-    font-size:11px;
-    margin-top:5px;
+    font-size:10px;
 }
 
 .rating{
     color:#f5c518;
-    font-size:11px;
-    margin-top:5px;
+    font-size:10px;
+    margin-top:4px;
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-    margin-top:50px;
-    padding:30px;
+    margin-top:40px;
+    padding:25px;
     border-top:1px solid #222;
     text-align:center;
-    color:#666;
-    font-size:12px;
+    color:#555;
+    font-size:10px;
 }
 
 /* ================= MOBILE ================= */
@@ -282,16 +296,16 @@ footer{
     }
 
     .logo{
-        font-size:18px;
+        font-size:17px;
     }
 
     nav{
-        margin-left:25px;
+        margin-left:28px;
         gap:17px;
     }
 
     nav a{
-        font-size:9px;
+        font-size:8px;
     }
 
     .search{
@@ -299,8 +313,11 @@ footer{
     }
 
     .hero{
-        min-height:400px;
-        padding:40px 15px;
+
+        min-height:330px;
+
+        padding:35px 20px;
+
         background-position:center;
     }
 
@@ -308,9 +325,23 @@ footer{
         font-size:39px;
     }
 
+    .hero-info{
+        font-size:9px;
+    }
+
     .hero p{
-        font-size:12px;
-        max-width:350px;
+        font-size:10px;
+        max-width:330px;
+    }
+
+    .featured{
+        font-size:8px;
+        padding:6px 9px;
+    }
+
+    .btn{
+        padding:10px 15px;
+        font-size:10px;
     }
 
     .container{
@@ -318,30 +349,35 @@ footer{
     }
 
     .section-title h2{
-        font-size:18px;
+        font-size:17px;
     }
+
+    /* IMPORTANT MOBILE GRID */
 
     .movie-grid{
         grid-template-columns:repeat(2,1fr);
-        gap:14px;
+        gap:14px 10px;
     }
 
     .movie-title{
-        font-size:12px;
+        font-size:11px;
     }
 
-    .movie-meta,
+    .movie-meta{
+        font-size:9px;
+    }
+
     .rating{
-        font-size:10px;
+        font-size:9px;
     }
 }
 
-/* SMALL MOBILE */
+/* ================= VERY SMALL PHONE ================= */
 
 @media(max-width:380px){
 
     nav{
-        margin-left:15px;
+        margin-left:18px;
         gap:12px;
     }
 
@@ -350,19 +386,21 @@ footer{
     }
 
     .hero h1{
-        font-size:32px;
+        font-size:34px;
     }
 
     .movie-grid{
-        gap:10px;
+        gap:12px 8px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -378,8 +416,8 @@ CINE<span>MAX</span>
 </nav>
 
 <input
-class="search"
 id="search"
+class="search"
 type="text"
 placeholder="🔍 Search movies..."
 >
@@ -397,12 +435,22 @@ placeholder="🔍 Search movies..."
 FEATURED MOVIE
 </div>
 
-<h1>Avengers:<br>Endgame</h1>
+<h1>
+Avengers:<br>
+Endgame
+</h1>
 
 <div class="hero-info">
-2019 &nbsp; • &nbsp; Action, Adventure, Sci-Fi
-&nbsp; • &nbsp; 3h 1m
-&nbsp; • &nbsp; <span>★ 8.4</span>
+
+2019
+&nbsp; • &nbsp;
+Action, Adventure, Sci-Fi
+&nbsp; • &nbsp;
+3h 1m
+&nbsp; • &nbsp;
+
+<span>★ 8.4</span>
+
 </div>
 
 <p>
@@ -412,8 +460,15 @@ Thanos' actions and restore balance to the universe.
 </p>
 
 <div class="buttons">
-<button class="btn btn-red">▶ Watch Now</button>
-<button class="btn btn-dark">More Info</button>
+
+<button class="btn btn-red">
+▶ Watch Now
+</button>
+
+<button class="btn btn-dark">
+More Info
+</button>
+
 </div>
 
 </div>
@@ -436,28 +491,56 @@ Thanos' actions and restore balance to the universe.
 
 <div class="genres">
 
-<div class="genre active" data-genre="all">All</div>
-<div class="genre" data-genre="Action">Action</div>
-<div class="genre" data-genre="Adventure">Adventure</div>
-<div class="genre" data-genre="Comedy">Comedy</div>
-<div class="genre" data-genre="Drama">Drama</div>
-<div class="genre" data-genre="Horror">Horror</div>
-<div class="genre" data-genre="Sci-Fi">Sci-Fi</div>
-<div class="genre" data-genre="Thriller">Thriller</div>
-<div class="genre" data-genre="Romance">Romance</div>
+<div class="genre active" data-genre="all">
+All
+</div>
+
+<div class="genre" data-genre="Action">
+Action
+</div>
+
+<div class="genre" data-genre="Adventure">
+Adventure
+</div>
+
+<div class="genre" data-genre="Comedy">
+Comedy
+</div>
+
+<div class="genre" data-genre="Drama">
+Drama
+</div>
+
+<div class="genre" data-genre="Horror">
+Horror
+</div>
+
+<div class="genre" data-genre="Sci-Fi">
+Sci-Fi
+</div>
+
+<div class="genre" data-genre="Thriller">
+Thriller
+</div>
+
+<div class="genre" data-genre="Romance">
+Romance
+</div>
 
 </div>
 
 </section>
 
 
-<!-- TRENDING -->
+<!-- ================= TRENDING ================= -->
 
-<section id="trending" style="margin-top:35px">
+<section id="trending" style="margin-top:34px">
 
 <div class="section-title">
 
-<h2>🔥 Trending Now</h2>
+<h2>
+🔥 Trending Now
+</h2>
 
 <span class="view">
 View All →
@@ -465,12 +548,13 @@ View All →
 
 </div>
 
+
 <div class="movie-grid" id="movieGrid">
 
 
-<!-- 1 -->
+<!-- 01 SPIDER MAN -->
 
-<div class="movie-card" data-genre="Action Sci-Fi">
+<div class="movie-card" data-genre="Action Adventure Sci-Fi">
 
 <img
 class="poster"
@@ -495,9 +579,9 @@ Spider-Man: No Way Home
 </div>
 
 
-<!-- 2 -->
+<!-- 02 DARK KNIGHT -->
 
-<div class="movie-card" data-genre="Action Drama">
+<div class="movie-card" data-genre="Action Drama Thriller">
 
 <img
 class="poster"
@@ -522,7 +606,7 @@ The Dark Knight
 </div>
 
 
-<!-- 3 -->
+<!-- 03 JOKER -->
 
 <div class="movie-card" data-genre="Crime Drama Thriller">
 
@@ -549,7 +633,7 @@ Joker
 </div>
 
 
-<!-- 4 -->
+<!-- 04 INCEPTION -->
 
 <div class="movie-card" data-genre="Sci-Fi Thriller">
 
@@ -576,9 +660,9 @@ Inception
 </div>
 
 
-<!-- 5 -->
+<!-- 05 AVATAR -->
 
-<div class="movie-card" data-genre="Adventure Sci-Fi">
+<div class="movie-card" data-genre="Action Adventure Sci-Fi">
 
 <img
 class="poster"
@@ -603,9 +687,9 @@ Avatar
 </div>
 
 
-<!-- 6 -->
+<!-- 06 INTERSTELLAR -->
 
-<div class="movie-card" data-genre="Adventure Drama">
+<div class="movie-card" data-genre="Adventure Drama Sci-Fi">
 
 <img
 class="poster"
@@ -630,13 +714,40 @@ Interstellar
 </div>
 
 
-<!-- 7 -->
+<!-- 07 SPIDER VERSE -->
 
-<div class="movie-card" data-genre="Action Adventure">
+<div class="movie-card" data-genre="Action Adventure Animation">
 
 <img
 class="poster"
 src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg"
+alt="Spider-Man Across the Spider-Verse"
+>
+
+<span class="badge">4K</span>
+
+<div class="movie-title">
+Spider-Man: Across the Spider-Verse
+</div>
+
+<div class="movie-meta">
+2023 • Animation
+</div>
+
+<div class="rating">
+★ 8.6
+</div>
+
+</div>
+
+
+<!-- 08 AVENGERS INFINITY WAR -->
+
+<div class="movie-card" data-genre="Action Adventure Sci-Fi">
+
+<img
+class="poster"
+src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
 alt="Avengers Infinity War"
 >
 
@@ -657,41 +768,14 @@ Avengers: Infinity War
 </div>
 
 
-<!-- 8 -->
+<!-- 09 LORD OF THE RINGS -->
 
-<div class="movie-card" data-genre="Action Adventure">
-
-<img
-class="poster"
-src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
-alt="Avengers Endgame"
->
-
-<span class="badge">4K</span>
-
-<div class="movie-title">
-Avengers: Endgame
-</div>
-
-<div class="movie-meta">
-2019 • Action
-</div>
-
-<div class="rating">
-★ 8.4
-</div>
-
-</div>
-
-
-<!-- 9 -->
-
-<div class="movie-card" data-genre="Action Adventure">
+<div class="movie-card" data-genre="Action Adventure Drama">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg"
-alt="The Lord of the Rings"
+src="https://image.tmdb.org/t/p/w500/8BPZO0Bf8TeAy8znF43z8soK3sC.jpg"
+alt="Lord of the Rings"
 >
 
 <span class="badge">HD</span>
@@ -711,13 +795,13 @@ The Lord of the Rings
 </div>
 
 
-<!-- 10 -->
+<!-- 10 PIRATES -->
 
-<div class="movie-card" data-genre="Adventure Comedy">
+<div class="movie-card" data-genre="Action Adventure Comedy">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/uXEqmloGyP7UXAiphJUu2vKx3W.jpg"
+src="https://upload.wikimedia.org/wikipedia/en/2/2d/Pirates_of_the_caribbean_2_poster_b.jpg"
 alt="Pirates of the Caribbean"
 >
 
@@ -738,13 +822,13 @@ Pirates of the Caribbean
 </div>
 
 
-<!-- 11 -->
+<!-- 11 DUNE -->
 
-<div class="movie-card" data-genre="Action Adventure">
+<div class="movie-card" data-genre="Adventure Sci-Fi">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg"
+src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
 alt="Dune"
 >
 
@@ -765,9 +849,9 @@ Dune
 </div>
 
 
-<!-- 12 -->
+<!-- 12 GUARDIANS -->
 
-<div class="movie-card" data-genre="Action Sci-Fi">
+<div class="movie-card" data-genre="Action Adventure Sci-Fi">
 
 <img
 class="poster"
@@ -792,7 +876,7 @@ Guardians of the Galaxy
 </div>
 
 
-<!-- 13 -->
+<!-- 13 SHAWSHANK -->
 
 <div class="movie-card" data-genre="Drama">
 
@@ -819,14 +903,14 @@ The Shawshank Redemption
 </div>
 
 
-<!-- 14 -->
+<!-- 14 FELLOWSHIP -->
 
-<div class="movie-card" data-genre="Drama Crime">
+<div class="movie-card" data-genre="Adventure Drama">
 
 <img
 class="poster"
 src="https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
-alt="The Lord of the Rings Fellowship"
+alt="The Fellowship of the Ring"
 >
 
 <span class="badge">HD</span>
@@ -846,7 +930,7 @@ The Fellowship of the Ring
 </div>
 
 
-<!-- 15 -->
+<!-- 15 TITANIC -->
 
 <div class="movie-card" data-genre="Drama Romance">
 
@@ -873,13 +957,13 @@ Titanic
 </div>
 
 
-<!-- 16 -->
+<!-- 16 ENDGAME -->
 
-<div class="movie-card" data-genre="Action Adventure">
+<div class="movie-card" data-genre="Action Adventure Sci-Fi">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg"
+src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
 alt="Avengers Endgame"
 >
 
@@ -890,7 +974,7 @@ Avengers: Endgame
 </div>
 
 <div class="movie-meta">
-2019 • Adventure
+2019 • Action
 </div>
 
 <div class="rating">
@@ -900,9 +984,9 @@ Avengers: Endgame
 </div>
 
 
-<!-- 17 -->
+<!-- 17 MARTIAN -->
 
-<div class="movie-card" data-genre="Sci-Fi Adventure">
+<div class="movie-card" data-genre="Adventure Drama Sci-Fi">
 
 <img
 class="poster"
@@ -927,14 +1011,14 @@ The Martian
 </div>
 
 
-<!-- 18 -->
+<!-- 18 MISSION IMPOSSIBLE -->
 
 <div class="movie-card" data-genre="Action Thriller">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/8jX8f7K0ZbW8z2jY2k9gVxF4W5M.jpg"
-alt="Mission Impossible"
+src="https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg"
+alt="Mission Impossible Dead Reckoning"
 >
 
 <span class="badge">4K</span>
@@ -954,13 +1038,13 @@ Mission: Impossible
 </div>
 
 
-<!-- 19 -->
+<!-- 19 LION KING -->
 
-<div class="movie-card" data-genre="Animation Adventure">
+<div class="movie-card" data-genre="Animation Adventure Drama">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/2bXbqYdUdNVa8VIWXVfclF9e2yb.jpg"
+src="https://image.tmdb.org/t/p/w500/pOG7JuPrz1Q5NtuQHAt5jzgtQzN.jpg"
 alt="The Lion King"
 >
 
@@ -981,13 +1065,13 @@ The Lion King
 </div>
 
 
-<!-- 20 -->
+<!-- 20 FURIOUS 7 -->
 
-<div class="movie-card" data-genre="Action Crime">
+<div class="movie-card" data-genre="Action Crime Thriller">
 
 <img
 class="poster"
-src="https://image.tmdb.org/t/p/w500/Ak1rC3m6Q7cJ8ZbV7h9n6xW5y4T.jpg"
+src="https://image.tmdb.org/t/p/w500/2PDTW6C8CrwAbv62x5p2gG8x6g.jpg"
 alt="Furious 7"
 >
 
@@ -1018,7 +1102,9 @@ Furious 7
 <!-- ================= FOOTER ================= -->
 
 <footer>
+
 CINEMAX © 2026 • Premium Movie Experience
+
 </footer>
 
 
@@ -1026,12 +1112,16 @@ CINEMAX © 2026 • Premium Movie Experience
 
 /* ================= SEARCH ================= */
 
-const search = document.getElementById("search");
-const cards = document.querySelectorAll(".movie-card");
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".movie-card");
 
 search.addEventListener("input",function(){
 
-    const value = this.value.toLowerCase();
+    const value =
+    this.value.toLowerCase();
 
     cards.forEach(card=>{
 
@@ -1040,11 +1130,10 @@ search.addEventListener("input",function(){
         .innerText
         .toLowerCase();
 
-        if(title.includes(value)){
-            card.style.display="";
-        }else{
-            card.style.display="none";
-        }
+        card.style.display =
+        title.includes(value)
+        ? ""
+        : "none";
 
     });
 
@@ -1053,33 +1142,38 @@ search.addEventListener("input",function(){
 
 /* ================= GENRE FILTER ================= */
 
-const genres = document.querySelectorAll(".genre");
+const genres =
+document.querySelectorAll(".genre");
 
 genres.forEach(genre=>{
 
     genre.addEventListener("click",function(){
 
-        genres.forEach(g=>g.classList.remove("active"));
+        genres.forEach(g=>{
+            g.classList.remove("active");
+        });
 
         this.classList.add("active");
 
-        const selected = this.dataset.genre;
+        const selected =
+        this.dataset.genre;
 
         cards.forEach(card=>{
 
             if(selected==="all"){
+
                 card.style.display="";
                 return;
+
             }
 
             const movieGenres =
             card.dataset.genre;
 
-            if(movieGenres.includes(selected)){
-                card.style.display="";
-            }else{
-                card.style.display="none";
-            }
+            card.style.display =
+            movieGenres.includes(selected)
+            ? ""
+            : "none";
 
         });
 
